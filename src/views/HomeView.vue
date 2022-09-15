@@ -22,22 +22,24 @@
 
     <form
       @submit.prevent="SearchMovies"
-      class="flex flex-col items-center px-3 py-4 gap-3"
+      class="flex flex-col sm:grid sm:grid-cols-3 items-center px-3 py-4 gap-3 md:gird-cols-4 lg:grid-cols-5 md:w-4/5 mx-auto"
     >
       <input
         v-model="state.search"
-        class="w-full px-3 py-4 text-white rounded-sm drop-shadow bg-gray-700/50 placeholder:text-lg placeholder:font-semibold"
+        class="w-full px-3 py-4 text-white rounded-sm drop-shadow bg-gray-700/50 placeholder:text-lg placeholder:font-semibold sm:col-span-2 md:col-span-3 lg:col-span-4"
         type="text"
         placeholder="What are you looking for?"
       />
       <input
-        class="text-white uppercase cursor-pointer px-3 py-4 w-full max-w-xs text-center font-bold bg-emerald-500 active:bg-emerald-600 active:rounded-md rounded-md drop-shadow-sm"
+        class="text-white uppercase cursor-pointer px-3 py-4 w-full max-w-xs text-center font-bold bg-emerald-500 active:bg-emerald-600 active:rounded-md rounded-md drop-shadow-sm md:col-start-2 lg:col-auto"
         type="submit"
         value="Search"
       />
     </form>
     <!-- search list -->
-    <div class="grid grid-cols-2 gap-2 gap-y-4 p-4">
+    <div
+      class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-2 gap-y-4 md:gap-4 p-4"
+    >
       <div
         v-for="movie in state.movies"
         :key="movie.imdbID"
@@ -46,7 +48,7 @@
         <router-link :to="'/movie/' + movie.imdbID">
           <div class="relative">
             <img
-              class="h-80 object-cover"
+              class="h-80 object-cover w-full"
               :src="movie.Poster"
               :alt="movie.Title"
             />
